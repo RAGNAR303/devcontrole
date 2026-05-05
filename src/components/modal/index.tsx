@@ -13,8 +13,6 @@ export function ModalTicket() {
     }
   };
 
-  console.log(ticket);
-
   return (
     <section
       className="bg-slate-800/50 absolute  w-full min-h-screen z-99 backdrop-blur-xs"

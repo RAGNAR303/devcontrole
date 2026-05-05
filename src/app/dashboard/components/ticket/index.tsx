@@ -25,7 +25,7 @@ export function Ticket({ ticket, customer }: TicketItemProps) {
         id: ticket.id,
       });
 
-      console.log(response.data);
+      
       router.refresh();
     } catch (error) {
       console.log(error);

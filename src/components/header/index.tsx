@@ -10,7 +10,6 @@ import Image from "next/image";
 export function Header() {
   const { status, data } = useSession();
 
-  console.log(data);
 
   async function handleSignIn() {
     await signIn();

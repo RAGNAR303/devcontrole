@@ -19,7 +19,7 @@ callbacks: {
             email: string
         }
 
-        console.log(session)
+      
         return session
     }
 }

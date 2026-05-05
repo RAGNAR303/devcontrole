@@ -16,7 +16,7 @@ export function CardCustomer({ customer }: { customer: CustomerProps }) {
         },
       });
 
-      console.log(response.data);
+    
       router.refresh();
     } catch (error) {
       console.log(error);

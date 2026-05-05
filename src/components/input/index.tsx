@@ -26,7 +26,7 @@ export function Input({
   return (
     <div className="flex flex-col gap-1">
       {label && (
-        <label htmlFor="" className="text-sm font-bold">
+        <label className="text-sm font-bold">
           {label}
         </label>
       )}

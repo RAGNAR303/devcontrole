@@ -2,6 +2,19 @@
 
 
 body {
+
+
   background-color: #161b1d;
   color: #d5d5d5;
+}
+
+button,
+a {
+  @apply cursor-pointer;
+}
+
+
+
+.inputStyle {
+  @apply py-1 px-3 bg-slate-700/35 rounded outline-0 border border-slate-500/50 focus:ring
 }
