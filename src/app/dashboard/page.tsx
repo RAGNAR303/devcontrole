@@ -20,6 +20,7 @@ export default async function Dashboard() {
     where: {
       userId: session.user.id,
       status: "ABERTO", // Filtra so o chamados como aberto
+
     },
     include: {
       customer: true, // inclui o dados do cliente na chamada API
@@ -45,7 +46,7 @@ export default async function Dashboard() {
           <thead className=" bg-blue-700/50">
             <tr className="uppercase font-bold">
               <td className="pl-2">Clientes</td>
-              <td align="center" className="hidden md:block">
+              <td align="center" className="hidden md:flex justify-center text-center">
                 Data do chamado
               </td>
               <td className="py-3">Status</td>

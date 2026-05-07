@@ -25,7 +25,6 @@ export function Ticket({ ticket, customer }: TicketItemProps) {
         id: ticket.id,
       });
 
-      
       router.refresh();
     } catch (error) {
       console.log(error);
@@ -43,7 +42,7 @@ export function Ticket({ ticket, customer }: TicketItemProps) {
 
   return (
     <>
-      <tr className="bg-slate-700/35 hover:bg-slate-800 duration-200 border-b-2 border-slate-600 last:border-0 last:rounded-b">
+      <tr className="bg-slate-700/35 backdrop-blur-2xl hover:bg-slate-800 duration-200 border-b-2 border-slate-600 last:border-0 last:rounded-b">
         <td className="pl-2 ">{customer?.name}</td>
         <td align="center" className="hidden md:block">
           {ticket.created_at?.toLocaleDateString("pt-BR")}

@@ -24,9 +24,7 @@ export default async function Customer() {
     <Container>
       <main className=" flex flex-col w-full">
         <div className="flex  justify-between flex-col gap-2 md:flex-row">
-          <h1 className="uppercase text-2xl font-bold   ">
-            Meus Clientes
-          </h1>
+          <h1 className="uppercase text-2xl font-bold   ">Meus Clientes</h1>
           {customer.length > 0 && (
             <Link href={"/dashboard/customer/newCustomer"}>
               <Button>NOVO cliente</Button>
@@ -41,8 +39,8 @@ export default async function Customer() {
 
         {customer.length === 0 && (
           <section className="h-2/4 flex flex-col gap-3 items-center justify-center">
-            <h2 className="text-2xl">Nao a cliente cadastrado</h2>
-            <Link href={"/dashboard/customer/new"}>
+            <h2 className="text-2xl">Nenhum cliente cadastrado</h2>
+            <Link href={"/dashboard/customer/newCustomer"}>
               <Button>NOVO cliente</Button>
             </Link>
           </section>

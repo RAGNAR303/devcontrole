@@ -44,3 +44,30 @@ export async function PATCH(request: Request) {
 
 
 }
+
+
+
+export async function POST(request: Request) {
+
+    const { id, name, title, description, userId } = await request.json()
+
+    try {
+
+        await prismaClient.ticket.create({
+            data: {
+                name: title,
+                description: description,
+                status: "ABERTO",
+                customerId: id,
+                userId
+            }
+
+
+        })
+
+
+        return NextResponse.json({ message: "Dados recibidos" })
+    } catch (error) {
+        return NextResponse.json({ message: "falid register ticket" })
+    }
+}

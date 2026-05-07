@@ -5,6 +5,8 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/input";
 import { Button } from "@/components/button";
+import { CustomerInfoProps } from "../../page";
+import { api } from "@/lib/api";
 
 const schema = z.object({
   name: z
@@ -17,15 +19,44 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
-export function FormTicket() {
+export function FormTicket({ customer }: { customer: CustomerInfoProps }) {
   const {
     register,
     handleSubmit,
+    setError,
     formState: { errors },
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
+  console.log(customer);
+
+  async function handleRegisterTicket(data: FormData) {
+    if (!data) {
+      setError("name", { type: "custom", message: "Campo name esta faltando" });
+      setError("description", {
+        type: "custom",
+        message: "Campo descrição esta faltando",
+      });
+      return;
+    }
+
+    try {
+      await api.post("/api/ticket", {
+        id: customer.id,
+        name: customer.name,
+        title: data.name,
+        description: data.description,
+        userId: customer.userId,
+      });
+    } catch (error) {
+      console.log("falid register ticket");
+    }
+  }
+
   return (
-    <form action="" className="flex flex-col gap-2  w-full">
+    <form
+      onSubmit={handleSubmit(handleRegisterTicket)}
+      className="flex flex-col gap-2  w-full"
+    >
       <Input
         label="Nome do chamado"
         type="text"
@@ -40,7 +71,7 @@ export function FormTicket() {
           placeholder="Descreva o problema..."
           id="description"
           {...register("description")}
-          className="inputStyle resize-none h-20 w-full "
+          className="inputStyle resize-none h-30 w-full "
         ></textarea>
 
         {errors.description?.message && (
