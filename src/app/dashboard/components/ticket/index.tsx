@@ -16,7 +16,7 @@ interface TicketItemProps {
 
 export function Ticket({ ticket, customer }: TicketItemProps) {
   const { handleModalVisible, setDetailModal } = useContext(ModalContext);
-  const [ticketInfo, setTicketInfo] = useState("");
+
   const router = useRouter();
 
   async function handleTicketStatus() {

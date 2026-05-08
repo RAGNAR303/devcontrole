@@ -7,6 +7,7 @@ import { Input } from "@/components/input";
 import { Button } from "@/components/button";
 import { CustomerInfoProps } from "../../page";
 import { api } from "@/lib/api";
+import { redirect } from "next/navigation";
 
 const schema = z.object({
   name: z
@@ -14,7 +15,7 @@ const schema = z.object({
     .min(1, "Campo nome e obrigátorio"),
   description: z
     .string("Descreva o problema de forma clara e objetiva")
-    .min(20, "Campo de descrição e obrigátorio"),
+    .min(5, "Campo de descrição e obrigátorio"),
 });
 
 type FormData = z.infer<typeof schema>;
@@ -24,6 +25,7 @@ export function FormTicket({ customer }: { customer: CustomerInfoProps }) {
     register,
     handleSubmit,
     setError,
+    setValue,
     formState: { errors },
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
@@ -42,11 +44,17 @@ export function FormTicket({ customer }: { customer: CustomerInfoProps }) {
     try {
       await api.post("/api/ticket", {
         id: customer.id,
-        name: customer.name,
-        title: data.name,
+        name: data.name,
         description: data.description,
         userId: customer.userId,
       });
+
+      setValue("name", "");
+      setValue("description", "");
+
+      setTimeout(() => {
+        redirect("/open/status");
+      }, 1000);
     } catch (error) {
       console.log("falid register ticket");
     }

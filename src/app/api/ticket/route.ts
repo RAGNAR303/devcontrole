@@ -49,13 +49,17 @@ export async function PATCH(request: Request) {
 
 export async function POST(request: Request) {
 
-    const { id, name, title, description, userId } = await request.json()
+    const { id, name, description, userId } = await request.json()
+
+    if (!id || !name || !description) {
+        return NextResponse.json({ message: "falid register ticket" })
+    }
 
     try {
 
         await prismaClient.ticket.create({
             data: {
-                name: title,
+                name: name,
                 description: description,
                 status: "ABERTO",
                 customerId: id,
@@ -66,7 +70,7 @@ export async function POST(request: Request) {
         })
 
 
-        return NextResponse.json({ message: "Dados recibidos" })
+        return NextResponse.json({ message: "Chamado cadastrado com sucesso!" })
     } catch (error) {
         return NextResponse.json({ message: "falid register ticket" })
     }
