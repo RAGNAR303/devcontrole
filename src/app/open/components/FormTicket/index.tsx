@@ -29,7 +29,7 @@ export function FormTicket({ customer }: { customer: CustomerInfoProps }) {
     formState: { errors },
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
-  console.log(customer);
+ 
 
   async function handleRegisterTicket(data: FormData) {
     if (!data) {

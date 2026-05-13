@@ -12,11 +12,16 @@ export async function GET(request: Request) {
     const { searchParams } = new URL(request.url) // acessa a url, e procura campo search com parametro
     const customerEmail = searchParams.get("email") // procura pelo nome a váriavel que vai vir a nome buscado
 
+
+
+
     if (!customerEmail || customerEmail === "") {
         return NextResponse.json({ messege: "Cliente não encrontado na base de dados" }, { status: 400 })
     }
 
     try {
+
+
         const customer = await prismaClient.customer.findFirst({
             where: {
                 email: customerEmail
@@ -26,8 +31,11 @@ export async function GET(request: Request) {
             customer
         )
     } catch (error) {
+        console.log(error)
+
         return NextResponse.json({ messege: "Cliente não encrontado na base de dados" }, { status: 400 })
     }
+
 
 }
 

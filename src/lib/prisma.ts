@@ -1,22 +1,38 @@
-import { PrismaClient} from '../generated/prisma/client'
-import { withAccelerate } from "@prisma/extension-accelerate"
-
-let prisma: PrismaClient
+import { PrismaClient } from '../generated/prisma/client'
 
 
-if(process.env.NODE_ENV === 'production'){
-    prisma = new PrismaClient()
-}else{
-    // eslint-disable-next-line prefer-const
-    let globalWithprisma = global as typeof globalThis & {
-        prisma: PrismaClient
-    }
+// let prisma: PrismaClient
 
-    if(!globalWithprisma.prisma ){
-        globalWithprisma.prisma = new PrismaClient() 
-    }
 
-    prisma = globalWithprisma.prisma
+// if (process.env.NODE_ENV === 'production') {
+//     prisma = new PrismaClient()
+// } else {
+
+//     let globalWithprisma = global as typeof globalThis & {
+//         prisma: PrismaClient
+//     }
+
+//     if (!globalWithprisma.prisma) {
+//         globalWithprisma.prisma = new PrismaClient()
+//     }
+
+//     prisma = globalWithprisma.prisma
+// }
+
+
+
+
+
+const globalForPrisma = global as unknown as {
+    prisma: PrismaClient
+}
+
+export const prisma =
+    globalForPrisma.prisma ||
+    new PrismaClient()
+
+if (process.env.NODE_ENV !== "production") {
+    globalForPrisma.prisma = prisma
 }
 
 export default prisma

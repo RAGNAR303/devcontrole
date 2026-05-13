@@ -47,6 +47,8 @@ export default function OpenTicket() {
       return;
     }
 
+    console.log(data.email);
+
     const response = await api.get("/api/customer", {
       params: {
         email: data.email,
@@ -60,8 +62,6 @@ export default function OpenTicket() {
       });
       return;
     }
-
-    console.log(response.data);
 
     setCustomer({
       id: response.data.id as string,
