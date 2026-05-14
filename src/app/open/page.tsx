@@ -47,13 +47,15 @@ export default function OpenTicket() {
       return;
     }
 
-    console.log(data.email);
+
 
     const response = await api.get("/api/customer", {
       params: {
         email: data.email,
       },
     });
+
+ 
 
     if (response.data === null) {
       setError("email", {
