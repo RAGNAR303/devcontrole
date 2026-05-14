@@ -15,13 +15,13 @@ export function ModalTicket() {
 
   return (
     <section
-      className="bg-slate-800/50 absolute  w-full min-h-screen z-99 backdrop-blur-xs"
+      className="bg-slate-800/50 absolute  w-full min-h-screen h-full z-99 backdrop-blur-xs"
       onClick={handleModalClick}
     >
       <div className="absolute inset-0 flex items-center justify-center ">
         <div
           ref={modalRef}
-          className="bg-slate-700 w-4/5 md:w-1/2 max-w-2xl p-3 rounded-md shadow-lg flex flex-col gap-2 "
+          className="bg-slate-700 w-9/10 md:w-1/2 max-w-2xl p-3 rounded-md shadow-lg flex flex-col gap-2 "
         >
           <div className="flex w-full justify-between">
             <h2 className="font-black text-2xl">Detalhes do chamados</h2>
