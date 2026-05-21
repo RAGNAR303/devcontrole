@@ -5,6 +5,7 @@ import { ModalContext } from "@/providers/modal";
 import { CustomerProps } from "@/utils/customer.type";
 import { TicketProps } from "@/utils/ticket.type";
 import { FaCircleInfo } from "react-icons/fa6";
+import { RiEditBoxFill } from "react-icons/ri";
 import { MdCheckBox } from "react-icons/md";
 import { api } from "@/lib/api";
 import { useRouter } from "next/navigation";
@@ -40,11 +41,15 @@ export function Ticket({ ticket, customer }: TicketItemProps) {
     });
   }
 
+  function handleEditTicket(id: string) {
+    router.push(`/dashboard/edit/${id}`);
+  }
+
   return (
     <>
       <tr className="bg-slate-700/35 backdrop-blur-2xl hover:bg-slate-800 duration-200 border-b-2 border-slate-600 last:border-0 last:rounded-b">
         <td className="pl-2 ">{customer?.name}</td>
-        <td align="center" className="hidden md:block">
+        <td  className="hidden md:block">
           {ticket.created_at?.toLocaleDateString("pt-BR")}
         </td>
         <td className="py-3">
@@ -59,6 +64,10 @@ export function Ticket({ ticket, customer }: TicketItemProps) {
 
           <button className="pr-2" onClick={handleTicketStatus}>
             <MdCheckBox className="text-slate-400 hover:text-slate-600 duration-200 text-2xl" />
+          </button>
+
+          <button onClick={() => handleEditTicket(ticket.id)}>
+            <RiEditBoxFill className="text-green-400 hover:text-green-600 duration-200 text-2xl" />
           </button>
         </td>
       </tr>

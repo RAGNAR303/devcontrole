@@ -98,7 +98,7 @@ export async function POST(request: Request) {
             }
         })
     } catch (error) {
-        return NextResponse.json({ message: "Failed create new customer" }, { status: 400 })
+        return NextResponse.json({ error: "Failed create new customer" }, { status: 400 })
     }
     return NextResponse.json({ message: "Rota de cadastro" })
 

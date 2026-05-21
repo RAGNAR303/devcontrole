@@ -5,6 +5,8 @@ import { api } from "@/lib/api";
 import { useRouter } from "next/navigation";
 import { MdOutlineAlternateEmail, MdPhone } from "react-icons/md";
 import { FaUserAlt } from "react-icons/fa";
+import { Button } from "@/components/button";
+import { redirect } from "next/navigation";
 
 export function CardCustomer({ customer }: { customer: CustomerProps }) {
   const router = useRouter();
@@ -20,6 +22,11 @@ export function CardCustomer({ customer }: { customer: CustomerProps }) {
     } catch (error) {
       console.log(error);
     }
+  }
+
+  async function handleEditCustomer(id: string) {
+    console.log(id);
+    redirect(`/dashboard/customer/editCustomer/${id}`);
   }
 
   return (
@@ -43,13 +50,14 @@ export function CardCustomer({ customer }: { customer: CustomerProps }) {
           </strong>
           <p>{customer.phone}</p>
         </li>
-        <li className="mt-2">
-          <button
-            onClick={handleDeleteCustomer}
-            className="bg-red-800 hover:bg-red-600 duration-200 px-2 uppercase font-bold rounded"
-          >
+        <li className="flex items-center justify-between mt-2">
+          <Button onClick={handleDeleteCustomer} variant="cancel">
             Deletar
-          </button>
+          </Button>
+
+          <Button onClick={() => handleEditCustomer(customer.id)}>
+            Editar
+          </Button>
         </li>
       </ul>
     </article>

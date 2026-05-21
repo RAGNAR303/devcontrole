@@ -1,15 +1,31 @@
 import { ButtonHTMLAttributes, ReactNode } from "react";
+import { clsx } from "clsx";
+
+type Variant = "primary" | "cancel";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
+  variant?: Variant;
 }
 
-export function Button({ children, className, ...props }: ButtonProps) {
+export function Button({
+  variant = "primary",
+  children,
+  className,
+  ...props
+}: ButtonProps) {
+  const baseClass =
+    "uppercase  flex items-center justify-center gap-2 font-bold px-3 py-1 rounded duration-400 drop-shadow drop-shadow-black/30";
+
+  const variantClass = {
+    primary: "bg-blue-700/50 hover:bg-blue-700 active:hover:bg-blue-700",
+    cancel: "bg-red-700/50 hover:bg-red-700 active:hover:bg-red-700",
+  };
+
+  const buttonClass = clsx(baseClass, variantClass[variant], className);
+
   return (
-    <button
-      {...props}
-      className={`bg-blue-700/50 uppercase touch-auto flex items-center justify-center gap-2 font-bold px-3 py-1 rounded hover:bg-blue-700 active:hover:bg-blue-700 duration-400 drop-shadow drop-shadow-black/30 ${className}`}
-    >
+    <button {...props} className={buttonClass}>
       {children}
     </button>
   );

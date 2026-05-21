@@ -29,8 +29,6 @@ export function FormTicket({ customer }: { customer: CustomerInfoProps }) {
     formState: { errors },
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
- 
-
   async function handleRegisterTicket(data: FormData) {
     if (!data) {
       setError("name", { type: "custom", message: "Campo name esta faltando" });
@@ -68,9 +66,8 @@ export function FormTicket({ customer }: { customer: CustomerInfoProps }) {
       <Input
         label="Nome do chamado"
         type="text"
-        name="name"
         placeholder="Digite um titulo para chamado"
-        register={register}
+        {...register("name")}
         error={errors.name?.message}
       />
       <div className="w-full flex flex-col gap-0.5">

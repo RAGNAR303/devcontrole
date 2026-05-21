@@ -45,8 +45,6 @@ export async function PATCH(request: Request) {
 
 }
 
-
-
 export async function POST(request: Request) {
 
     const { id, name, description, userId } = await request.json()

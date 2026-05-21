@@ -5,6 +5,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import prismaClient from "@/lib/prisma";
+import { Top } from "@/components/top";
 
 export default async function NewTicket() {
   const session = await getServerSession(authOptions);
@@ -44,12 +45,11 @@ export default async function NewTicket() {
   return (
     <Container>
       <main className="w-full ">
-        <div className="flex  justify-between flex-col gap-2 md:flex-row">
-          <h1 className="uppercase text-2xl font-bold ">Novo Chamado</h1>
-          <Link href={"/dashboard"}>
-            <Button>Voltar</Button>
-          </Link>
-        </div>
+        <Top
+          title="Novo chamado"
+          url={"/dashboard"}
+          button={<Button variant="cancel">cancelar</Button>}
+        />
         <section className="mt-7">
           <form action={handleNewTicket} className="flex flex-col w-full gap-2">
             <label className="text-sm font-bold">Nome do chamado</label>

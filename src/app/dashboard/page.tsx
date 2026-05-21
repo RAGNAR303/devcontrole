@@ -52,12 +52,7 @@ export default async function Dashboard() {
           <thead className=" bg-blue-700/50">
             <tr className="uppercase font-bold">
               <td className="pl-2">Clientes</td>
-              <td
-                align="center"
-                className="hidden md:flex justify-center text-center"
-              >
-                Data do chamado
-              </td>
+              <td className="hidden md:inline ">Data do chamado</td>
               <td className="py-3">Status</td>
               <td className="text-right pr-2">Açoes</td>
             </tr>

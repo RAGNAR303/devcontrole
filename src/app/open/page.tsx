@@ -47,15 +47,11 @@ export default function OpenTicket() {
       return;
     }
 
-
-
     const response = await api.get("/api/customer", {
       params: {
         email: data.email,
       },
     });
-
- 
 
     if (response.data === null) {
       setError("email", {
@@ -81,7 +77,7 @@ export default function OpenTicket() {
             <div className="w-full flex items-center justify-between ">
               <div className="flex gap-1.5 flex-wrap">
                 <strong>Cliente encontrato: </strong>
-                <p>{customer.name}</p>
+                <p className="capitalize">{customer.name}</p>
               </div>
               <button onClick={handleClearCustumer}>
                 <IoCloseCircleOutline className="text-2xl text-red-600" />
@@ -95,7 +91,7 @@ export default function OpenTicket() {
               <Input
                 type="text"
                 placeholder="Digite o E-mail do cliente"
-                register={register}
+                {...register("email")}
                 name="email"
                 error={errors.email?.message}
               />
