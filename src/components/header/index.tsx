@@ -4,9 +4,9 @@ import Link from "next/link";
 import { FaUserCog } from "react-icons/fa";
 import { HiOutlineLogout } from "react-icons/hi";
 import { useSession, signIn, signOut } from "next-auth/react";
-import { BiLoaderCircle } from "react-icons/bi";
 import { BiSolidLockAlt } from "react-icons/bi";
 import Image from "next/image";
+import { TbLoader } from "react-icons/tb";
 export function Header() {
   const { status, data } = useSession();
 
@@ -23,14 +23,14 @@ export function Header() {
     <header className="border-b border-slate-800 w-full drop-shadow drop-shadow-black/30 z-30 ">
       <nav className="flex items-center justify-between max-w-5xl w-full mx-auto px-6 py-2 ">
         <Link href={"/dashboard"}>
-          <h2 className="font-extrabold md:text-2xl hover:tracking-wide duration-300">
+          <h2 className="font-extrabold md:text-2xl hover:tracking-wide duration-300 ">
             <span className="text-blue-700/50 ">DEV</span>CONTROLE
           </h2>
         </Link>
 
         {status === "loading" && (
           <div>
-            <BiLoaderCircle className="text-2xl md:text-3xl animate-spin text-blue-700/50" />
+            <TbLoader className="text-2xl md:text-3xl animate-spin text-blue-700/50" />
           </div>
         )}
 
@@ -51,7 +51,7 @@ export function Header() {
                   height={30}
                   className="rounded-full peer"
                 />
-                <div className="bg-slate-700 absolute z-99 right-8 p-3 rounded text-sm opacity-0 hidden peer-hover:opacity-100 peer-hover:flex flex-col duration-100 border-l-4 border-blue-700/50">
+                <div className="bg-slate-700 absolute z-99 right-8 p-3 rounded text-sm opacity-0 hidden peer-hover:opacity-100 peer-active:opacity-100  peer-hover:flex peer-active:flex flex-col duration-100 border-l-4 border-blue-700/50">
                   <p>{data.user.name}</p>
                   <strong>{data.user.email}</strong>
                 </div>

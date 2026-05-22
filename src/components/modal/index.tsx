@@ -26,7 +26,9 @@ export function ModalTicket() {
         >
           <div className="flex w-full justify-between">
             <h2 className="font-black text-2xl">Detalhes do chamados</h2>
-            <Button onClick={handleModalVisible}>Fechar</Button>
+            <Button variant="cancel" onClick={handleModalVisible}>
+              Fechar
+            </Button>
           </div>
           <p>
             <strong>Nome: </strong> {ticket?.ticket.name}
