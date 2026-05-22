@@ -2,6 +2,7 @@
 
 import { useContext, useRef, MouseEvent } from "react";
 import { ModalContext } from "@/providers/modal";
+import { Button } from "../button";
 
 export function ModalTicket() {
   const { handleModalVisible, ticket } = useContext(ModalContext);
@@ -25,12 +26,7 @@ export function ModalTicket() {
         >
           <div className="flex w-full justify-between">
             <h2 className="font-black text-2xl">Detalhes do chamados</h2>
-            <button
-              onClick={handleModalVisible}
-              className="font-bold bg-red-800 hover:bg-red-600 px-3 rounded"
-            >
-              Fechar
-            </button>
+            <Button onClick={handleModalVisible}>Fechar</Button>
           </div>
           <p>
             <strong>Nome: </strong> {ticket?.ticket.name}

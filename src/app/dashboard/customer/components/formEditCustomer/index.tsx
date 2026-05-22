@@ -16,6 +16,7 @@ interface FormData {
 }
 
 export function FormEditCustomer() {
+  const [loading, setLoading] = useState(true);
   const params = useParams();
   const id = params.id as string;
 
@@ -34,7 +35,6 @@ export function FormEditCustomer() {
         const response = await api.get(`/api/customer/${id}`);
         const data: FormData = response.data;
 
-       
         reset({
           name: data.name,
           address: data.address,
@@ -44,6 +44,8 @@ export function FormEditCustomer() {
       } catch (error) {
         console.log(error);
         router.push("/dashboard/customer");
+      } finally {
+        setLoading(false);
       }
     }
 
@@ -60,6 +62,12 @@ export function FormEditCustomer() {
     });
 
     router.push("/dashboard/customer");
+  }
+
+  if (loading) {
+    return (
+      <p className="text-2xl font-bold">Carregando dados do cliente.....</p>
+    );
   }
 
   return (

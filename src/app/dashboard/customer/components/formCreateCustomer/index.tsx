@@ -60,10 +60,9 @@ export function FormCreateCustomer({ userId }: { userId: string }) {
     >
       <Input
         type="text"
-        name="name"
+        {...register("name")}
         placeholder="Digite o nome completo..."
         label={"Nome completo"}
-        register={register}
         error={errors.name?.message}
       />
 
@@ -71,30 +70,27 @@ export function FormCreateCustomer({ userId }: { userId: string }) {
         <div className="flex-1">
           <Input
             type="number"
-            name="phone"
+            {...register("phone")}
             placeholder="Exe. (DD) 99999999"
             label={"Telefone"}
-            register={register}
             error={errors.phone?.message}
           />
         </div>
         <div className="flex-2">
           <Input
             type="email"
-            name="email"
             placeholder="Digite seu email"
             label={"Email"}
-            register={register}
+            {...register("email")}
             error={errors.email?.message}
           />
         </div>
       </section>
       <Input
         type="text"
-        name="address"
+        {...register("address")}
         placeholder="Digite seu endereço"
         label={"Endereço"}
-        register={register}
         error={errors.address?.message}
       />
       <Button type="submit" className="mt-1.5">
