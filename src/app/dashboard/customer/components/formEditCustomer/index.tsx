@@ -18,13 +18,13 @@ interface FormData {
 export function FormEditCustomer() {
   const params = useParams();
   const id = params.id as string;
+
   const router = useRouter();
 
   const {
     register,
     handleSubmit,
     reset,
-    setValues,
     formState: { errors },
   } = useForm<FormData>();
 
@@ -34,7 +34,13 @@ export function FormEditCustomer() {
         const response = await api.get(`/api/customer/${id}`);
         const data: FormData = response.data;
 
-        reset(data);
+       
+        reset({
+          name: data.name,
+          address: data.address,
+          email: data.email,
+          phone: data.phone,
+        });
       } catch (error) {
         console.log(error);
         router.push("/dashboard/customer");

@@ -2,11 +2,10 @@
 
 import { CustomerProps } from "@/utils/customer.type";
 import { api } from "@/lib/api";
-import { useRouter } from "next/navigation";
 import { MdOutlineAlternateEmail, MdPhone } from "react-icons/md";
 import { FaUserAlt } from "react-icons/fa";
 import { Button } from "@/components/button";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export function CardCustomer({ customer }: { customer: CustomerProps }) {
   const router = useRouter();
@@ -25,8 +24,7 @@ export function CardCustomer({ customer }: { customer: CustomerProps }) {
   }
 
   async function handleEditCustomer(id: string) {
-    console.log(id);
-    redirect(`/dashboard/customer/editCustomer/${id}`);
+    router.push(`/dashboard/customer/editCustomer/${id}`);
   }
 
   return (

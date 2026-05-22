@@ -1,19 +1,25 @@
 import prismaClient from '@/lib/prisma'
-import { NextResponse } from 'next/server'
+import { console } from 'inspector'
+
+import { NextRequest, NextResponse } from 'next/server'
 
 
 interface ParamsProps {
-    params: {
+    params: Promise<{
         id: string
-    }
+    }>
 }
 
-export async function GET(request: Request, { params }: ParamsProps) {
+export async function GET(request: NextRequest, { params }: ParamsProps) {
 
+    const { id } = await params
+
+
+    console.log(id)
     try {
         const customer = await prismaClient.customer.findUnique({
             where: {
-                id: (await params).id,
+                id
             }
         })
 
@@ -24,26 +30,33 @@ export async function GET(request: Request, { params }: ParamsProps) {
 }
 
 
-export async function PUT(request: Request, { params }: ParamsProps) {
+export async function PUT(request: NextRequest, { params }: ParamsProps) {
+
+
+
+    const { id } = await params
 
     try {
         const body = await request.json()
+
+        console.log(body)
+
         if (!body) {
             return NextResponse.json({ error: "Nenhuma informação recebida" }, { status: 500 })
 
         }
-        
-        const { name, email, phone, address } = body
+
+
 
         const updateCustomer = await prismaClient.customer.update({
             where: {
-                id: (await params).id
+                id
             },
             data: {
-                name,
-                email,
-                phone,
-                address,
+                name: body.name,
+                email: body.email,
+                phone: body.phone,
+                address: body.address,
                 updated_at: new Date
             }
         })
