@@ -7,6 +7,7 @@ import { Button } from "@/components/button";
 import { Input } from "@/components/input";
 import { api } from "@/lib/api";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 const schema = z.object({
   name: z.string().min(3, "O campo nome e obrigatorio"),
@@ -50,6 +51,7 @@ export function FormCreateCustomer({ userId }: { userId: string }) {
       userId: userId,
     });
     router.refresh();
+    toast.success("Cliente cadastrado com sucesso");
     router.replace("/dashboard/customer");
   }
 
@@ -90,7 +92,7 @@ export function FormCreateCustomer({ userId }: { userId: string }) {
         type="text"
         {...register("address")}
         placeholder="Digite seu endereço"
-        label={"Endereço"}
+        label={"Endereço(opicional)"}
         error={errors.address?.message}
       />
       <Button type="submit" className="mt-1.5">

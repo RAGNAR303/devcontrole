@@ -3,6 +3,7 @@ import "./globals.css";
 import { Header } from "@/components/header";
 import { AuthProvider } from "@/providers/auth";
 import { ModalProvider } from "@/providers/modal";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   title: "Gerencimento de chamados",
@@ -21,6 +22,16 @@ export default function RootLayout({
           <ModalProvider>
             <Header />
             {children}
+            <Toaster
+              expand
+              visibleToasts={9}
+              offset={{ bottom: "24px", right: "16px", left: "16px" }}
+              mobileOffset={{ top: "16px" }}
+              richColors
+              closeButton
+              duration={3000}
+              theme="dark"
+            />
           </ModalProvider>
         </AuthProvider>
       </body>

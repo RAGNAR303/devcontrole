@@ -7,16 +7,21 @@ import { useSession, signIn, signOut } from "next-auth/react";
 import { BiSolidLockAlt } from "react-icons/bi";
 import Image from "next/image";
 import { TbLoader } from "react-icons/tb";
+import { toast } from "sonner";
 export function Header() {
   const { status, data } = useSession();
 
-
   async function handleSignIn() {
     await signIn();
+
+    if (status === "authenticated") {
+      return toast.success(`Bem vindo de volta ${data?.user.name}`);
+    }
   }
 
   async function handleSignOut() {
     await signOut();
+    toast.error("Voçê foi deslogado");
   }
 
   return (
@@ -30,7 +35,7 @@ export function Header() {
 
         {status === "loading" && (
           <div>
-            <TbLoader className="text-2xl md:text-3xl animate-spin text-blue-700/50" />
+            <TbLoader className="text-2xl md:text-3xl animate-spin" />
           </div>
         )}
 

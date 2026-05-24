@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { Button } from "@/components/button";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 interface FormData {
   name: string;
@@ -60,7 +61,7 @@ export function FormEditCustomer() {
       email: data.email,
       address: data.address,
     });
-
+    toast.success("Cliente atualizado com sucesso");
     router.push("/dashboard/customer");
   }
 
@@ -106,7 +107,7 @@ export function FormEditCustomer() {
       <Input
         type="text"
         placeholder="Digite seu endereço"
-        label={"Endereço"}
+        label={"Endereço(opicional)"}
         {...register("address")}
         error={errors.address?.message}
       />

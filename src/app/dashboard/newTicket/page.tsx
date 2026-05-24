@@ -6,6 +6,7 @@ import { authOptions } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import prismaClient from "@/lib/prisma";
 import { Top } from "@/components/top";
+import { success } from "zod";
 
 export default async function NewTicket() {
   const session = await getServerSession(authOptions);
@@ -39,6 +40,8 @@ export default async function NewTicket() {
         userId: session?.user.id,
       },
     });
+
+
     redirect("/dashboard");
   }
 
@@ -74,13 +77,13 @@ export default async function NewTicket() {
                 </label>
                 <select
                   name="customer"
-                  className="py-1 px-3 bg-slate-700/35 rounded outline-0 border border-slate-500/50 focus:ring capitalize"
+                  className="py-1 px-3 bg-slate-700/35 rounded  outline-0 border border-slate-500/50 focus:ring capitalize"
                 >
                   {customer.map((customer) => (
                     <option
                       value={customer.id}
                       key={customer.id}
-                      className="capitalize bg-slate-700/35"
+                      className="capitalize bg-slate-700 rounded"
                     >
                       {customer.name}
                     </option>

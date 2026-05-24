@@ -9,6 +9,8 @@ import { RiEditBoxFill } from "react-icons/ri";
 import { MdCheckBox } from "react-icons/md";
 import { api } from "@/lib/api";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+import { includes } from "zod";
 
 interface TicketItemProps {
   ticket: TicketProps;
@@ -25,7 +27,7 @@ export function Ticket({ ticket, customer }: TicketItemProps) {
       const response = await api.patch("/api/ticket", {
         id: ticket.id,
       });
-
+      toast.error("Chamado foi encerrado");
       router.refresh();
     } catch (error) {
       console.log(error);
@@ -49,7 +51,7 @@ export function Ticket({ ticket, customer }: TicketItemProps) {
     <>
       <tr className="bg-slate-700/35 backdrop-blur-2xl hover:bg-slate-800 duration-200 border-b-2 border-slate-600 last:border-0 last:rounded-b">
         <td className="pl-2 ">{customer?.name}</td>
-        <td  className="hidden md:block">
+        <td className="hidden md:block">
           {ticket.created_at?.toLocaleDateString("pt-BR")}
         </td>
         <td className="py-3">
@@ -66,8 +68,14 @@ export function Ticket({ ticket, customer }: TicketItemProps) {
             <MdCheckBox className="text-slate-400 hover:text-slate-600 duration-200 text-2xl" />
           </button>
 
-          <button onClick={() => handleEditTicket(ticket.id)}>
+          <button
+            className="pr-2 relative group"
+            onClick={() => handleEditTicket(ticket.id)}
+          >
             <RiEditBoxFill className="text-green-400 hover:text-green-600 duration-200 text-2xl" />
+            <div className="bg-slate-700 absolute z-99 right-8 px-2 rounded text-sm opacity-0 hidden    flex-col duration-100 border-l-4 border-blue-700/50 group-hover:opacity-100 group-hover:flex ">
+              <p className="uppercase">Editar</p>
+            </div>
           </button>
         </td>
       </tr>

@@ -11,6 +11,8 @@ import { IoCloseCircleOutline } from "react-icons/io5";
 import { useState } from "react";
 import { FormTicket } from "./components/FormTicket";
 import { api } from "@/lib/api";
+import { toast } from "sonner";
+
 const schema = z.object({
   email: z
     .string()
@@ -43,29 +45,38 @@ export default function OpenTicket() {
   }
 
   async function handleSearchEmail(data: FormData) {
+    const loading = toast.loading("Localizando cliente");
+
     if (!data.email) {
       return;
     }
 
-    const response = await api.get("/api/customer", {
-      params: {
-        email: data.email,
-      },
-    });
+    try {
+      toast.dismiss(loading);
 
-    if (response.data === null) {
+      const response = await api.get("/api/customer", {
+        params: {
+          email: data.email,
+        },
+      });
+
+      setCustomer({
+        id: response.data.id as string,
+        name: response.data.name as string,
+        userId: response.data.userId as string,
+      });
+      toast.success("Cliente localizado");
+      return;
+    } catch (error) {
+      console.log(error);
+      toast.dismiss(loading);
       setError("email", {
         type: "custom",
         message: "Ops!, Cliente não encontrado",
       });
+      toast.error("Cliente não esta cadastrado");
       return;
     }
-
-    setCustomer({
-      id: response.data.id as string,
-      name: response.data.name as string,
-      userId: response.data.userId as string,
-    });
   }
 
   return (

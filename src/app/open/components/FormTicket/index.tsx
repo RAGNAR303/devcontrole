@@ -8,6 +8,7 @@ import { Button } from "@/components/button";
 import { CustomerInfoProps } from "../../page";
 import { api } from "@/lib/api";
 import { redirect } from "next/navigation";
+import { toast } from "sonner";
 
 const schema = z.object({
   name: z
@@ -51,6 +52,7 @@ export function FormTicket({ customer }: { customer: CustomerInfoProps }) {
       setValue("description", "");
 
       setTimeout(() => {
+        toast.success("Chamado criando com sucesso!");
         redirect("/open/status");
       }, 1000);
     } catch (error) {
