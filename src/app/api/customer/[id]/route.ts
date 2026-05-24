@@ -15,7 +15,6 @@ export async function GET(request: NextRequest, { params }: ParamsProps) {
     const { id } = await params
 
 
-    console.log(id)
     try {
         const customer = await prismaClient.customer.findUnique({
             where: {
@@ -39,7 +38,6 @@ export async function PUT(request: NextRequest, { params }: ParamsProps) {
     try {
         const body = await request.json()
 
-        console.log(body)
 
         if (!body) {
             return NextResponse.json({ error: "Nenhuma informação recebida" }, { status: 500 })

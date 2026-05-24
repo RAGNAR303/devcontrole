@@ -30,7 +30,7 @@ export function Ticket({ ticket, customer }: TicketItemProps) {
       toast.error("Chamado foi encerrado");
       router.refresh();
     } catch (error) {
-      console.log(error);
+    
     }
   }
 

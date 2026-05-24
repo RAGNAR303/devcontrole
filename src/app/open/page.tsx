@@ -68,7 +68,7 @@ export default function OpenTicket() {
       toast.success("Cliente localizado");
       return;
     } catch (error) {
-      console.log(error);
+     
       toast.dismiss(loading);
       setError("email", {
         type: "custom",

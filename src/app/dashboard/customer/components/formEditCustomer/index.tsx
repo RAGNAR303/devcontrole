@@ -43,7 +43,7 @@ export function FormEditCustomer() {
           phone: data.phone,
         });
       } catch (error) {
-        console.log(error);
+     
         router.push("/dashboard/customer");
       } finally {
         setLoading(false);
@@ -54,7 +54,7 @@ export function FormEditCustomer() {
   }, [id, reset]);
 
   async function handleEditCustomer(data: FormData) {
-    console.log(data);
+  
     await api.put(`/api/customer/${id}`, {
       name: data.name,
       phone: data.phone,
