@@ -6,17 +6,18 @@ import { MdOutlineAlternateEmail, MdPhone } from "react-icons/md";
 import { FaUserAlt } from "react-icons/fa";
 import { Button } from "@/components/button";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 export function CardCustomer({ customer }: { customer: CustomerProps }) {
   const router = useRouter();
   async function handleDeleteCustomer() {
     try {
-      const response = await api.delete("/api/customer", {
+      await api.delete("/api/customer", {
         params: {
           id: customer.id,
         },
       });
-
+      toast.error("Cliente excluido!");
       router.refresh();
     } catch (error) {
       console.log(error);
