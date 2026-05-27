@@ -4,6 +4,7 @@ import { Header } from "@/components/header";
 import { AuthProvider } from "@/providers/auth";
 import { ModalProvider } from "@/providers/modal";
 import { Toaster } from "sonner";
+import { LoginProvider } from "@/providers/login";
 
 export const metadata: Metadata = {
   title: "Gerencimento de chamados",
@@ -19,20 +20,22 @@ export default function RootLayout({
     <html lang="pt-BR">
       <body className="min-h-full flex flex-col">
         <AuthProvider>
-          <ModalProvider>
-            <Header />
-            {children}
-            <Toaster
-              expand
-              visibleToasts={9}
-              offset={{ bottom: "24px", right: "16px", left: "16px" }}
-              mobileOffset={{ top: "16px" }}
-              richColors
-              closeButton
-              duration={3000}
-              theme="dark"
-            />
-          </ModalProvider>
+          <LoginProvider>
+            <ModalProvider>
+              <Header />
+              {children}
+              <Toaster
+                expand
+                visibleToasts={9}
+                offset={{ bottom: "24px", right: "16px", left: "16px" }}
+                mobileOffset={{ top: "16px" }}
+                richColors
+                closeButton
+                duration={3000}
+                theme="dark"
+              />
+            </ModalProvider>
+          </LoginProvider>
         </AuthProvider>
       </body>
     </html>

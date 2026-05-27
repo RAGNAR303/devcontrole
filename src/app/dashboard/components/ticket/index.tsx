@@ -1,6 +1,6 @@
 "use client";
 
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { ModalContext } from "@/providers/modal";
 import { CustomerProps } from "@/utils/customer.type";
 import { TicketProps } from "@/utils/ticket.type";
@@ -10,7 +10,6 @@ import { MdCheckBox } from "react-icons/md";
 import { api } from "@/lib/api";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { includes } from "zod";
 
 interface TicketItemProps {
   ticket: TicketProps;

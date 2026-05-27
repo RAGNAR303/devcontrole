@@ -19,7 +19,7 @@ export default async function editCustomer() {
         <div className="flex  justify-between flex-col gap-2 md:flex-row">
           <h1 className="uppercase text-2xl font-bold ">Editar Cliente</h1>
           <Link href={"/dashboard/customer"}>
-            <Button>Cancelar</Button>
+            <Button variant="cancel">Cancelar</Button>
           </Link>
         </div>
         <section className="mt-7">

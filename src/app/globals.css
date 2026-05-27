@@ -19,14 +19,7 @@ a {
   @apply py-1 px-3 bg-slate-700/35 rounded outline-0 border border-slate-500/50 focus:ring
 }
 
-/* td:first-child, tr:first-child {
-  border-radius: 8px 0 0 8px;
-}
 
-td:last-child,
-tr:last-child {
-  border-radius: 0 8px 8px 0;
-} */
 
 table td, table th {
   padding: 14px;
@@ -47,7 +40,7 @@ table {
   table tr {
     display: block;
     margin-bottom: 10px;
-    border-radius: 8px ;
+    border-radius: 8px;
     overflow: hidden;
   }
 
@@ -55,7 +48,7 @@ table {
     border-bottom: 2px solid #45556c;
     display: block;
     text-align: right;
-   
+
   }
 
   table td::before {

@@ -8,21 +8,11 @@ import { BiSolidLockAlt } from "react-icons/bi";
 import Image from "next/image";
 import { TbLoader } from "react-icons/tb";
 import { toast } from "sonner";
+import { useContext } from "react";
+import { LoginContext } from "@/providers/login";
 export function Header() {
-  const { status, data } = useSession();
-
-  async function handleSignIn() {
-    await signIn();
-
-    if (status === "authenticated") {
-      return toast.success(`Bem vindo de volta ${data?.user.name}`);
-    }
-  }
-
-  async function handleSignOut() {
-    await signOut();
-    toast.error("Voçê foi deslogado");
-  }
+  const { handleSignIn, handleSignOut, data, status } =
+    useContext(LoginContext);
 
   return (
     <header className="border-b border-slate-800 w-full drop-shadow drop-shadow-black/30 z-30 ">
