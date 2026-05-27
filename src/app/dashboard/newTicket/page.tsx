@@ -6,7 +6,7 @@ import { authOptions } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import prismaClient from "@/lib/prisma";
 import { Top } from "@/components/top";
-import { success } from "zod";
+import { generateIdCustom } from "@/utils/generateId";
 
 export default async function NewTicket() {
   const session = await getServerSession(authOptions);
@@ -31,8 +31,11 @@ export default async function NewTicket() {
       return;
     }
 
+    const ticketCode = await generateIdCustom();
+
     await prismaClient.ticket.create({
       data: {
+        ticketCode,
         name: name as string,
         description: description as string,
         status: "ABERTO",
@@ -40,7 +43,6 @@ export default async function NewTicket() {
         userId: session?.user.id,
       },
     });
-
 
     redirect("/dashboard");
   }

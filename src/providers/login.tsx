@@ -30,7 +30,7 @@ export const LoginProvider = ({ children }: { children: ReactNode }) => {
     toast.error("Voçê foi deslogado");
   }
 
-  console.log(data, status);
+ 
 
   return (
     <LoginContext.Provider

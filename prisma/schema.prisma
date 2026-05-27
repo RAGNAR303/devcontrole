@@ -31,6 +31,7 @@ model Customer {
 
 model Ticket {
   id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  ticketCode  String?   @unique
   name        String
   description String
   status      String

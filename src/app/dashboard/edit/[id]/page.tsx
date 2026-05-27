@@ -68,6 +68,10 @@ export default async function EditTicket({
               <strong>Telefone: </strong>
               {ticket?.customer?.phone}
             </p>
+            <p>
+              <strong>Chamado: </strong>
+              {ticket?.ticketCode}
+            </p>
           </div>
           <form action={handleUpdateTicket} className="flex flex-col gap-2">
             <Input
