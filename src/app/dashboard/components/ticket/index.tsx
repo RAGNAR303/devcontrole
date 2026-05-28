@@ -47,6 +47,10 @@ export function Ticket({ ticket, customer }: TicketItemProps) {
   return (
     <>
       <tr className="bg-slate-700/35 backdrop-blur-2xl hover:bg-slate-800 duration-200 border-b-2 border-transparent  last:border-0 last:rounded-b">
+        <td className="pl-2 " data-label="chamado">
+          {ticket.ticketCode}
+        </td>
+
         <td className="pl-2 " data-label="nome">
           {customer?.name}
         </td>

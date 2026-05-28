@@ -5,13 +5,11 @@ import banner from "../../public/image.png";
 import { Button } from "@/components/button";
 import { useContext } from "react";
 import { LoginContext } from "@/providers/login";
-import { generateIdCustom } from "@/utils/generateId";
+
 
 export default function Home() {
   const { handleSignIn, handleSignOut, status, data } =
     useContext(LoginContext);
-
-  generateIdCustom();
 
   return (
     <main className="flex justify-center items-center flex-col md:flex-row w-full gap-1 md:gap-20 min-h-[calc(100vh-(--spacing(12.5)))]  text-center">

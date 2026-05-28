@@ -47,7 +47,7 @@ export async function PATCH(request: Request) {
 
 export async function POST(request: Request) {
 
-    const { id, name, description, userId } = await request.json()
+    const { id, name, description, userId  } = await request.json()
 
     if (!id || !name || !description) {
         return NextResponse.json({ message: "falid register ticket" })

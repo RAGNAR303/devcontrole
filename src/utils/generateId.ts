@@ -19,4 +19,3 @@ export async function generateIdCustom() {
     return `TCK-${datePart}-${String(count + 1).padStart(4, "0")}`
 }
 
-console.log(generateIdCustom())

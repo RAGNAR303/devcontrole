@@ -7,7 +7,6 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import { FaPlus } from "react-icons/fa";
-import { tr } from "zod/v4/locales";
 import { ButtonRefresh } from "./components/buttonrefresh";
 
 export default async function Dashboard() {
@@ -51,6 +50,7 @@ export default async function Dashboard() {
         <table className=" w-full mt-7 rounded overflow-hidden border-spacing-3.5">
           <thead className=" bg-blue-700/50">
             <tr className="uppercase font-bold">
+              <td className="pl-2">Chamado</td>
               <td className="pl-2">Clientes</td>
               <td className="hidden md:flex ">Data do chamado</td>
               <td className="py-3">Status</td>

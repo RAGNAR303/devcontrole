@@ -10,7 +10,9 @@ export function SideBar() {
           className="flex items-center gap-3 text-xl hover:text-blue-700 active:text-blue-700  duration-200"
         >
           <IoFileTrayStacked className="text-3xl" />
-          <p className="hidden group-hover:block">Chamados</p>
+          <p className="hidden group-hover:block group-active:block">
+            Chamados
+          </p>
         </Link>
 
         <Link
@@ -18,7 +20,9 @@ export function SideBar() {
           className="flex items-center gap-3 text-xl hover:text-blue-700 active:text-blue-700   duration-200"
         >
           <FaUserAlt className="text-3xl" />
-          <p className="hidden group-hover:block">Clientes</p>
+          <p className="hidden group-hover:block group-active:block">
+            Clientes
+          </p>
         </Link>
       </nav>
     </div>
