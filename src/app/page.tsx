@@ -5,7 +5,7 @@ import banner from "../../public/image.png";
 import { Button } from "@/components/button";
 import { useContext } from "react";
 import { LoginContext } from "@/providers/login";
-
+import Link from "next/link";
 
 export default function Home() {
   const { handleSignIn, handleSignOut, status, data } =
@@ -54,9 +54,16 @@ export default function Home() {
           </Button>
         )}
         {status === "authenticated" && (
-          <Button onClick={handleSignOut} variant="cancel">
-            <p className="w-40">Sair</p>
-          </Button>
+          <div className="flex flex-col gap-2">
+            <Link href={"/dashboard"}>
+              <Button>
+                <p className="w-40">Ver chamados</p>
+              </Button>
+            </Link>
+            <Button onClick={handleSignOut} variant="cancel">
+              <p className="w-40">Sair</p>
+            </Button>
+          </div>
         )}
       </section>
     </main>
