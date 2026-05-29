@@ -6,13 +6,14 @@ import { Button } from "@/components/button";
 import { useContext } from "react";
 import { LoginContext } from "@/providers/login";
 import Link from "next/link";
+import { IoFileTrayStacked } from "react-icons/io5";
 
 export default function Home() {
   const { handleSignIn, handleSignOut, status, data } =
     useContext(LoginContext);
 
   return (
-    <main className="flex justify-center items-center flex-col md:flex-row w-full gap-1 md:gap-20 min-h-[calc(100vh-(--spacing(12.5)))]  text-center">
+    <main className="flex justify-center relative items-center flex-col md:flex-row w-full gap-1 md:gap-20 min-h-[calc(100vh-(--spacing(12.5)))]  text-center">
       <section className="flex items-center flex-col justify-center flex-4  max-w-xs  md:max-w-xl  gap-2 p-1 md:p-4">
         <Image
           src={banner}
@@ -66,6 +67,12 @@ export default function Home() {
           </div>
         )}
       </section>
+      <Link
+        href={"/open"}
+        className="rounded-full p-3 absolute bottom-5 right-5 bg-slate-700/35 hover:bg-blue-700/80 active:bg-blue-700/80 border-2 duration-200 hover:scale-105 active:scale-105 border-slate-800  drop-shadow drop-shadow-black/50 active:p-4 hover:p-4 active:border-4 hover:border-4 animate-pulse "
+      >
+        <IoFileTrayStacked className="text-4xl drop-shadow drop-shadow-black/50" />
+      </Link>
     </main>
   );
 }

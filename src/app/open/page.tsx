@@ -7,11 +7,13 @@ import { Input } from "@/components/input";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { IoCloseCircleOutline } from "react-icons/io5";
+import { IoCloseCircleOutline, IoFileTrayStacked } from "react-icons/io5";
 import { useState } from "react";
 import { FormTicket } from "./components/FormTicket";
 import { api } from "@/lib/api";
 import { toast } from "sonner";
+import Link from "next/link";
+import { TiArrowLeftThick } from "react-icons/ti";
 
 const schema = z.object({
   email: z
@@ -68,7 +70,6 @@ export default function OpenTicket() {
       toast.success("Cliente localizado");
       return;
     } catch (error) {
-     
       toast.dismiss(loading);
       setError("email", {
         type: "custom",
@@ -81,7 +82,7 @@ export default function OpenTicket() {
 
   return (
     <Container>
-      <main className="w-full h-full flex flex-col items-center justify-center">
+      <main className="w-full h-full flex relative flex-col items-center justify-center">
         <h2 className="text-2xl md:text-3xl font-bold mt-10">Abri chamado</h2>
         <section className="mt-5 w-full max-w-xl bg-slate-700/30 px-2 md:px-10 py-5 rounded backdrop-blur-2xl">
           {customer ? (
@@ -118,6 +119,12 @@ export default function OpenTicket() {
           </section>
         )}
       </main>
+      <Link
+        href={"/"}
+        className="rounded-full p-3 absolute bottom-5 right-5 bg-slate-700/35 hover:bg-blue-700/80 active:bg-blue-700/80 border-2 duration-200 hover:scale-105 active:scale-105 border-slate-800  drop-shadow drop-shadow-black/50 active:p-4 hover:p-4 active:border-4 hover:border-4 animate-pulse "
+      >
+        <TiArrowLeftThick className="text-4xl drop-shadow drop-shadow-black/50" />
+      </Link>
     </Container>
   );
 }
