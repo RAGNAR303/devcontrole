@@ -27,6 +27,8 @@ export async function PATCH(request: Request) {
         return NextResponse.json({ error: "Filed update ticket" }, { status: 400 })
     }
 
+    
+
     try {
         await prismaClient.ticket.update({
             where: {
@@ -47,7 +49,7 @@ export async function PATCH(request: Request) {
 
 export async function POST(request: Request) {
 
-    const { id, name, description, userId  } = await request.json()
+    const { id, name, description, userId } = await request.json()
 
     if (!id || !name || !description) {
         return NextResponse.json({ message: "falid register ticket" })
@@ -63,8 +65,6 @@ export async function POST(request: Request) {
                 customerId: id,
                 userId
             }
-
-
         })
 
 

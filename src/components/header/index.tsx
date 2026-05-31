@@ -16,9 +16,9 @@ export function Header() {
 
   return (
     <header className="boxStyle w-full  z-30">
-      <nav className="flex items-center justify-between max-w-5xl w-full mx-auto px-6 py-2 ">
+      <nav className="flex items-center  justify-between max-w-5xl w-full mx-auto px-6 py-2 ">
         <Link href={"/dashboard"}>
-          <h2 className="font-extrabold md:text-2xl hover:tracking-wide duration-300 ">
+          <h2 className="font-extrabold text-xl hover:tracking-wide duration-300 ">
             <span className="text-blue-700/50 ">DEV</span>CONTROLE
           </h2>
         </Link>
@@ -36,7 +36,7 @@ export function Header() {
         )}
 
         {status === "authenticated" && (
-          <div className="flex items-center gap-1 md:text-2xl">
+          <div className="flex items-center gap-1 md:text-2xl ">
             {data ? (
               <Link href={"#"} className="relative  ">
                 <Image
@@ -44,9 +44,9 @@ export function Header() {
                   src={data.user.image as string}
                   width={30}
                   height={30}
-                  className="rounded-full peer"
+                  className="rounded-full peer drop-shadow drop-shadow-black/20"
                 />
-                <div className=" absolute z-99 right-8 p-3 d text-sm opacity-0 hidden peer-hover:opacity-100 peer-active:opacity-100  peer-hover:flex peer-active:flex flex-col duration-100 border-l-4 border-blue-700/50 boxStyle backdrop-blur-3xl">
+                <div className=" absolute z-99 right-8 p-3 d text-sm opacity-0 hidden peer-hover:opacity-100 peer-active:opacity-100  peer-hover:flex peer-active:flex flex-col duration-200 border-l-4 border-blue-700/50 boxStyle backdrop-blur-3xl peer-hover:bg-slate-700 transition-all">
                   <p>{data.user.name}</p>
                   <strong>{data.user.email}</strong>
                 </div>
@@ -58,7 +58,7 @@ export function Header() {
             )}
 
             <button className="text-2xl md:text-3xl " onClick={handleSignOut}>
-              <HiOutlineLogout className="text-red-500" />
+              <HiOutlineLogout className="text-red-400 active:text-red-600 hover:text-red-600 duration-200 hover:scale-95 active:scale-95 " />
             </button>
           </div>
         )}

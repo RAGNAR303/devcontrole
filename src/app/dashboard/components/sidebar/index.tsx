@@ -8,6 +8,7 @@ import { TiThMenu } from "react-icons/ti";
 import { TiArrowSortedDown } from "react-icons/ti";
 import { FaPlus } from "react-icons/fa";
 
+
 export function SideBar() {
   const [open, setOpen] = useState(false);
   const [ticket, setTicket] = useState(false);
@@ -15,7 +16,7 @@ export function SideBar() {
 
   return (
     <div
-      className={`flex flex-col md:p-5 p-3 border-r md:hover:items-start  w-full max-w-12 md:max-w-18 min-h-[calc(100vh-(--spacing(12.5)))] md:hover:h-full md:hover:max-w-55 shadow-2xl  shadow-black/50 drop-shadow drop-shadow-black/50 overflow-hidden duration-200 group  z-30 fixed  backdrop-blur-2xl  ${open ? `max-w-50 w-full absolute items-start ` : "max-w-15"} boxStyle  rounded-br rounded-tr `}
+      className={`flex flex-col md:p-5 p-3 border-r md:hover:items-start  w-full max-w-12 md:max-w-18 h-full md:hover:h-full md:hover:max-w-55 shadow-2xl  shadow-black/50 drop-shadow drop-shadow-black/50 overflow-hidden duration-200 group  z-40 fixed  backdrop-blur-2xl  ${open ? `max-w-50 w-full absolute items-start ` : "max-w-15"} boxStyle  rounded-br rounded-tr `}
     >
       <button
         onClick={() => setOpen(!open)}

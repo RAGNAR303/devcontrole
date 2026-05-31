@@ -52,35 +52,36 @@ export default async function Dashboard() {
             )
           }
         />
-
-        <table className=" w-full mt-7 rounded overflow-hidden border-spacing-3.5 drop-shadow drop-shadow-black/30">
-          <thead className=" bg-blue-700/50">
-            <tr className="uppercase font-bold">
-              <td className="pl-2">Chamado</td>
-              <td className="pl-2">Clientes</td>
-              <td className="hidden md:flex ">Data do chamado</td>
-              <td className="py-3">Status</td>
-              <td className="text-right pr-2">Açoes</td>
-            </tr>
-          </thead>
-          <tbody>
-            {ticket.length > 0 ? (
-              ticket.map((ticket) => (
-                <Ticket
-                  ticket={ticket}
-                  customer={ticket.customer}
-                  key={ticket.id}
-                />
-              ))
-            ) : (
-              <tr>
-                <td colSpan={5} align="center" className="p-2">
-                  <p className="text-2xl">Nenhum chamado aberto...</p>
-                </td>
+        {ticket.length > 0 ? (
+          <table className=" w-full mt-7 rounded overflow-hidden border-spacing-3.5 drop-shadow drop-shadow-black/30">
+            <thead className=" bg-blue-700/50">
+              <tr className="uppercase font-bold">
+                <td className="pl-2">Chamado</td>
+                <td className="pl-2">Clientes</td>
+                <td className="hidden md:flex ">Data do chamado</td>
+                <td className="py-3">Status</td>
+                <td className="text-right pr-2">Açoes</td>
               </tr>
-            )}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {ticket.length > 0 &&
+                ticket.map((ticket) => (
+                  <Ticket
+                    ticket={ticket}
+                    customer={ticket.customer}
+                    key={ticket.id}
+                  />
+                ))}
+            </tbody>
+          </table>
+        ) : (
+          <div className="w-full flex flex-col gap-3 items-center justify-center h-1/2">
+            <p className="text-2xl font-medium">Nenhum chamado aberto...</p>
+            <Link href={"/dashboard/newTicket"}>
+              <Button>Abrir Chamado</Button>
+            </Link>
+          </div>
+        )}
       </main>
     </Container>
   );

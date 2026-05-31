@@ -58,7 +58,9 @@ export function Ticket({ ticket, customer }: TicketItemProps) {
           {ticket.created_at?.toLocaleDateString("pt-BR")}
         </td>
         <td className="py-3" data-label="status">
-          <span className="bg-green-300 text-green-800 p-1 rounded ">
+          <span
+            className={`p-1 rounded font-bold ${ticket.status === "ABERTO" ? " bg-green-300 text-green-800" : "bg-red-300 text-red-800"}  `}
+          >
             {ticket.status}
           </span>
         </td>
