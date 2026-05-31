@@ -84,7 +84,7 @@ export default function OpenTicket() {
     <Container>
       <main className="w-full h-full flex relative flex-col items-center justify-center">
         <h2 className="text-2xl md:text-3xl font-bold mt-10">Abri chamado</h2>
-        <section className="mt-5 w-full max-w-xl bg-slate-700/30 px-2 md:px-10 py-5 rounded backdrop-blur-2xl">
+        <section className="mt-5 w-full max-w-xl  px-2 md:px-10 py-5 boxStyle ">
           {customer ? (
             <div className="w-full flex items-center justify-between ">
               <div className="flex gap-1.5 flex-wrap">
@@ -114,7 +114,7 @@ export default function OpenTicket() {
           )}
         </section>
         {customer !== null && (
-          <section className="mt-5 w-full max-w-xl bg-slate-700/30 px-2 md:px-10 py-5 rounded backdrop-blur-2xl">
+          <section className="mt-5 w-full max-w-xl  px-2 md:px-10 py-5 boxStyle ">
             <FormTicket customer={customer} />
           </section>
         )}

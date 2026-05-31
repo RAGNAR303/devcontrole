@@ -2,10 +2,10 @@
 
 
 body {
-
-
   background-color: #161b1d;
   color: #d5d5d5;
+  min-height: 100dvh;
+  height: 100%;
 }
 
 button,
@@ -19,6 +19,9 @@ a {
   @apply py-1 px-3 bg-slate-700/35 rounded outline-0 border border-slate-500/50 focus:ring
 }
 
+.boxStyle {
+  @apply drop-shadow drop-shadow-black/30 rounded backdrop-blur-2xl border bg-slate-700/35 border-slate-800
+}
 
 
 table td, table th {

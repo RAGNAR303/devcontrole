@@ -13,7 +13,7 @@ export default function Home() {
     useContext(LoginContext);
 
   return (
-    <main className="flex justify-center relative items-center flex-col md:flex-row w-full gap-1 md:gap-20 min-h-[calc(100vh-(--spacing(12.5)))]  text-center">
+    <main className="flex justify-center relative items-center flex-col md:flex-row w-full gap-1 md:gap-20 min-h-[calc(100dvh-(--spacing(12.5)))]  text-center">
       <section className="flex items-center flex-col justify-center flex-4  max-w-xs  md:max-w-xl  gap-2 p-1 md:p-4">
         <Image
           src={banner}
@@ -24,7 +24,7 @@ export default function Home() {
         />
       </section>
 
-      <section className="flex flex-col gap-2 px-6 py-3 md:py-9  items-center  justify-center flex-1 w-full  md:max-w-xs  bg-slate-700/35 h-full max-h-100 rounded-t-2xl   md:rounded drop-shadow-xl drop-shadow-black ">
+      <section className="flex flex-col gap-2 px-6 py-3 md:py-9  items-center  justify-center flex-1 w-full  md:max-w-xs  h-full max-h-100 rounded-t-2xl   md:rounded boxStyle  ">
         <div>
           <h1 className="font-extralight text-xl md:text-2xl">
             Gerencie sua Empresa

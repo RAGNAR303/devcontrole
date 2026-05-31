@@ -8,6 +8,7 @@ import { authOptions } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import { FaPlus } from "react-icons/fa";
 import { ButtonRefresh } from "./components/buttonrefresh";
+import { Top } from "@/components/top";
 
 export default async function Dashboard() {
   const session = await getServerSession(authOptions);
@@ -35,19 +36,24 @@ export default async function Dashboard() {
   return (
     <Container>
       <main className="flex flex-col  w-full">
-        <div className="flex  justify-between flex-col gap-2 md:flex-row">
-          <h1 className="uppercase text-2xl font-bold ">Meu Chamados</h1>
-          <div className=" flex items-center gap-2">
-            <ButtonRefresh />
-            <Link href={"/dashboard/newTicket"}>
-              <Button>
-                <FaPlus /> NOVO CHAMADO
-              </Button>
-            </Link>
-          </div>
-        </div>
+        <Top
+          title="Meu Chamados"
+          url={"/dashboard/newTicket"}
+          button={
+            ticket.length > 0 ? (
+              <div className=" flex items-center gap-2">
+                <ButtonRefresh />
+                <Button>
+                  <FaPlus /> NOVO CHAMADO
+                </Button>
+              </div>
+            ) : (
+              ""
+            )
+          }
+        />
 
-        <table className=" w-full mt-7 rounded overflow-hidden border-spacing-3.5">
+        <table className=" w-full mt-7 rounded overflow-hidden border-spacing-3.5 drop-shadow drop-shadow-black/30">
           <thead className=" bg-blue-700/50">
             <tr className="uppercase font-bold">
               <td className="pl-2">Chamado</td>
@@ -68,7 +74,7 @@ export default async function Dashboard() {
               ))
             ) : (
               <tr>
-                <td colSpan={4} align="center" className="p-2">
+                <td colSpan={5} align="center" className="p-2">
                   <p className="text-2xl">Nenhum chamado aberto...</p>
                 </td>
               </tr>

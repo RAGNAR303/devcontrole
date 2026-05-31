@@ -15,7 +15,7 @@ export function Header() {
     useContext(LoginContext);
 
   return (
-    <header className="border-b border-slate-800 w-full drop-shadow drop-shadow-black/30 z-30 ">
+    <header className="boxStyle w-full  z-30">
       <nav className="flex items-center justify-between max-w-5xl w-full mx-auto px-6 py-2 ">
         <Link href={"/dashboard"}>
           <h2 className="font-extrabold md:text-2xl hover:tracking-wide duration-300 ">
@@ -46,7 +46,7 @@ export function Header() {
                   height={30}
                   className="rounded-full peer"
                 />
-                <div className="bg-slate-700 absolute z-99 right-8 p-3 rounded text-sm opacity-0 hidden peer-hover:opacity-100 peer-active:opacity-100  peer-hover:flex peer-active:flex flex-col duration-100 border-l-4 border-blue-700/50">
+                <div className=" absolute z-99 right-8 p-3 d text-sm opacity-0 hidden peer-hover:opacity-100 peer-active:opacity-100  peer-hover:flex peer-active:flex flex-col duration-100 border-l-4 border-blue-700/50 boxStyle backdrop-blur-3xl">
                   <p>{data.user.name}</p>
                   <strong>{data.user.email}</strong>
                 </div>

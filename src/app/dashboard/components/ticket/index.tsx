@@ -46,7 +46,7 @@ export function Ticket({ ticket, customer }: TicketItemProps) {
 
   return (
     <>
-      <tr className="bg-slate-700/35 backdrop-blur-2xl hover:bg-slate-800 duration-200 border-b-2 border-transparent  last:border-0 last:rounded-b">
+      <tr className="bg-slate-700/35 backdrop-blur-2xl hover:bg-slate-800 duration-200 border-b border-transparent  last:border-0 last:rounded-b drop-shadow drop-shadow-black/30 ">
         <td className="pl-2 " data-label="chamado">
           {ticket.ticketCode}
         </td>
@@ -65,15 +65,15 @@ export function Ticket({ ticket, customer }: TicketItemProps) {
         <td align="right" className="text-xl" data-label="ações">
           <button onClick={handleShowModal} className="pr-2 relative group">
             <FaCircleInfo className="text-blue-500/50 hover:text-blue-500 duration-200  " />
-            <div className="bg-slate-700 absolute z-99 right-8 px-2 rounded text-sm opacity-0 hidden    flex-col duration-100 border-l-4 border-blue-700/50 group-hover:opacity-100 group-hover:flex ">
+            <div className=" absolute z-99 right-8 px-2  text-sm opacity-0 hidden  flex-col duration-100 group-hover:opacity-100 group-hover:flex boxStyle">
               <p className="uppercase">Detalhes</p>
             </div>
           </button>
 
           <button className="pr-2 relative group" onClick={handleTicketStatus}>
             <MdCheckBox className="text-slate-400 hover:text-slate-600 duration-200 text-2xl" />
-            <div className="bg-slate-700 absolute z-99 right-8 px-2 rounded text-sm opacity-0 hidden    flex-col duration-100 border-l-4 border-blue-700/50 group-hover:opacity-100 group-hover:flex ">
-              <p className="uppercase inline-block">Encerrar Chamado</p>
+            <div className=" absolute z-99 right-8 px-2  text-sm opacity-0 hidden  flex-col duration-100 group-hover:opacity-100 group-hover:flex boxStyle">
+              <p className="uppercase inline-block">Encerrar</p>
             </div>
           </button>
 
@@ -82,7 +82,7 @@ export function Ticket({ ticket, customer }: TicketItemProps) {
             onClick={() => handleEditTicket(ticket.id)}
           >
             <RiEditBoxFill className="text-green-400 hover:text-green-600 duration-200 text-2xl" />
-            <div className="bg-slate-700 absolute z-99 right-8 px-2 rounded text-sm opacity-0 hidden    flex-col duration-100 border-l-4 border-blue-700/50 group-hover:opacity-100 group-hover:flex ">
+            <div className=" absolute z-99 right-8 px-2  text-sm opacity-0 hidden  flex-col duration-100 group-hover:opacity-100 group-hover:flex boxStyle">
               <p className="uppercase">Editar</p>
             </div>
           </button>

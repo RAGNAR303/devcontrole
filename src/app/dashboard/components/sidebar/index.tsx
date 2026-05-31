@@ -13,10 +13,9 @@ export function SideBar() {
   const [ticket, setTicket] = useState(false);
   const [customer, setCustomer] = useState(false);
 
-
   return (
     <div
-      className={`flex flex-col md:p-5 p-3  bg-slate-700/35  md:hover:items-start  w-full max-w-12 md:max-w-18 min-h-[calc(100vh-(--spacing(12.5)))] md:hover:h-full md:hover:max-w-55  rounded-br-2xl rounded-tr-2xl shadow-2xl  shadow-black/50 drop-shadow drop-shadow-black/30 overflow-hidden duration-200 group  z-30 fixed  backdrop-blur-2xl  ${open ? `max-w-50 w-full absolute items-start ` : "max-w-15"}`}
+      className={`flex flex-col md:p-5 p-3 border-r md:hover:items-start  w-full max-w-12 md:max-w-18 min-h-[calc(100vh-(--spacing(12.5)))] md:hover:h-full md:hover:max-w-55 shadow-2xl  shadow-black/50 drop-shadow drop-shadow-black/50 overflow-hidden duration-200 group  z-30 fixed  backdrop-blur-2xl  ${open ? `max-w-50 w-full absolute items-start ` : "max-w-15"} boxStyle  rounded-br rounded-tr `}
     >
       <button
         onClick={() => setOpen(!open)}
