@@ -8,7 +8,6 @@ import { TiThMenu } from "react-icons/ti";
 import { TiArrowSortedDown } from "react-icons/ti";
 import { FaPlus } from "react-icons/fa";
 
-
 export function SideBar() {
   const [open, setOpen] = useState(false);
   const [ticket, setTicket] = useState(false);
@@ -20,7 +19,7 @@ export function SideBar() {
     >
       <button
         onClick={() => setOpen(!open)}
-        className="flex gap-3  text-xl  uppercase font-bold mt-8 md:hidden  hover:text-blue-700 active:text-blue-700   duration-200"
+        className="flex gap-3  text-xl  uppercase font-bold mt-20 md:hidden  hover:text-blue-700 active:text-blue-700   duration-200"
       >
         <TiThMenu className="text-3xl" />
         <p
@@ -30,7 +29,7 @@ export function SideBar() {
         </p>
       </button>
 
-      <nav className=" flex gap-6 flex-col uppercase font-bold mt-8">
+      <nav className=" flex gap-6 flex-col uppercase font-bold mt-10 md:mt-20">
         <div>
           <div className="flex gap-2 ">
             <Link

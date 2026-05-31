@@ -23,11 +23,12 @@ export default async function Customer() {
 
   return (
     <Container>
-      <main className=" flex flex-col w-full">
+      <main className="flex flex-col w-full mt-2.5">
         <Top
           title="Meus Clientes"
           url="/dashboard/customer/newCustomer"
           button={customer.length > 0 && <Button>NOVO cliente</Button>}
+          
         />
         <section className="grid mt-7 gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {customer.map((customer) => (

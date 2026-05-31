@@ -15,7 +15,7 @@ export function Header() {
     useContext(LoginContext);
 
   return (
-    <header className="boxStyle w-full  z-30">
+    <header className="boxStyle w-full  z-60 fixed top-0 right-0">
       <nav className="flex items-center  justify-between max-w-5xl w-full mx-auto px-6 py-2 ">
         <Link href={"/dashboard"}>
           <h2 className="font-extrabold text-xl hover:tracking-wide duration-300 ">

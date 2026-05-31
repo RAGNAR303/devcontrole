@@ -7,13 +7,14 @@ import { useContext } from "react";
 import { LoginContext } from "@/providers/login";
 import Link from "next/link";
 import { IoFileTrayStacked } from "react-icons/io5";
+import { Container } from "@/components/container";
 
 export default function Home() {
   const { handleSignIn, handleSignOut, status, data } =
     useContext(LoginContext);
 
   return (
-    <main className="flex justify-center relative items-center flex-col md:flex-row w-full gap-1 md:gap-20 min-h-[calc(100dvh-(--spacing(12.5)))]  text-center">
+    <main className="flex justify-center relative items-center flex-col md:flex-row w-full gap-1 md:gap-20 min-h-[calc(100dvh-(--spacing(12.5)))]  text-center mt-12">
       <section className="flex items-center flex-col justify-center flex-4  max-w-xs  md:max-w-xl  gap-2 p-1 md:p-4">
         <Image
           src={banner}
