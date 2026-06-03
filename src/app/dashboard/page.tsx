@@ -56,11 +56,12 @@ export default async function Dashboard() {
           <table className=" w-full mt-7 rounded overflow-hidden border-spacing-3.5 drop-shadow drop-shadow-black/30">
             <thead className=" bg-blue-700/50">
               <tr className="uppercase font-bold">
-                <td className="pl-2">Chamado</td>
-                <td className="pl-2">Clientes</td>
-                <td className="hidden md:flex ">Data do chamado</td>
-                <td className="py-3">Status</td>
-                <td className="text-right pr-2">Açoes</td>
+                <td className="pl-2 ">Chamado</td>
+                <td colSpan={2} className="pl-2 col-span-2 ">Clientes</td>
+
+                <td className="hidden md:flex  ">Data do chamado</td>
+                <td className="py-3  ">Status</td>
+                <td className="text-right pr-2 ">Açoes</td>
               </tr>
             </thead>
             <tbody>

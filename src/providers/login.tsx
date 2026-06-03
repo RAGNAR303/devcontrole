@@ -1,6 +1,6 @@
 "use client";
 
-import { Session, SessionOptions } from "next-auth";
+import { Session } from "next-auth";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { createContext, ReactNode, useState } from "react";
 import { toast } from "sonner";
@@ -29,8 +29,6 @@ export const LoginProvider = ({ children }: { children: ReactNode }) => {
     await signOut();
     toast.error("Voçê foi deslogado");
   }
-
- 
 
   return (
     <LoginContext.Provider

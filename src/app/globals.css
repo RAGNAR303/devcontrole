@@ -2,10 +2,20 @@
 
 
 body {
-  background-color: #161b1d;
-  color: #d5d5d5;
   min-height: 100dvh;
   height: 100%;
+  transition: color 0.5s ease, background-color 0.5s ease;
+}
+
+
+.dark {
+  background-color: #161b1d;
+  color: #d5d5d5;
+}
+
+.light {
+  background-color: #ffffff;
+  color: #202020;
 }
 
 button,

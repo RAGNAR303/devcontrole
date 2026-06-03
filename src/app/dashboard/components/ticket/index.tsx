@@ -10,6 +10,7 @@ import { MdCheckBox } from "react-icons/md";
 import { api } from "@/lib/api";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { useTheme } from "@/providers/theme";
 
 interface TicketItemProps {
   ticket: TicketProps;
@@ -19,6 +20,7 @@ interface TicketItemProps {
 export function Ticket({ ticket, customer }: TicketItemProps) {
   const { handleModalVisible, setDetailModal } = useContext(ModalContext);
 
+  const { theme } = useTheme();
   const router = useRouter();
 
   async function handleTicketStatus() {
@@ -46,14 +48,17 @@ export function Ticket({ ticket, customer }: TicketItemProps) {
 
   return (
     <>
-      <tr className="bg-slate-700/35 backdrop-blur-2xl hover:bg-slate-800 duration-200 border-b border-transparent  last:border-0 last:rounded-b drop-shadow drop-shadow-black/30 ">
+      <tr
+        className={`bg-slate-700/35 backdrop-blur-2xl duration-200 border-b border-transparent  last:border-0 last:rounded-b drop-shadow drop-shadow-black/30 ${theme === "dark" ? "hover:bg-slate-800/50 " : "hover:bg-slate-500/50"} `}
+      >
         <td className="pl-2 " data-label="chamado">
           {ticket.ticketCode}
         </td>
 
-        <td className="pl-2 " data-label="nome">
+        <td colSpan={2} className="pl-2 col-span-2 " data-label="nome">
           {customer?.name}
         </td>
+
         <td className="hidden md:block" data-label="Data do chamado">
           {ticket.created_at?.toLocaleDateString("pt-BR")}
         </td>

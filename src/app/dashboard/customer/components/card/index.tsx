@@ -7,9 +7,11 @@ import { FaUserAlt } from "react-icons/fa";
 import { Button } from "@/components/button";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { useTheme } from "@/providers/theme";
 
 export function CardCustomer({ customer }: { customer: CustomerProps }) {
   const router = useRouter();
+  const { theme } = useTheme();
   async function handleDeleteCustomer() {
     try {
       await api.delete("/api/customer", {
@@ -29,7 +31,9 @@ export function CardCustomer({ customer }: { customer: CustomerProps }) {
   }
 
   return (
-    <article className="  p-2  hover:scale-[1.02] duration-200 hover:shadow-md shadow-black/20 border-l-6 border-blue-700/50 boxStyle ">
+    <article
+      className={`   p-2  hover:scale-[1.02] duration-200 hover:shadow-md shadow-black/20 border-l-6 border-blue-700/50 boxStyle ${theme === "dark" ? "hover:bg-slate-800/50 " : "hover:bg-slate-500/50"}  `}
+    >
       <ul>
         <li className="flex items-center gap-1">
           <strong className="uppercase">
